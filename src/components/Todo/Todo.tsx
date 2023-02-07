@@ -1,15 +1,17 @@
-import React, { MouseEvent } from "react";
+import { useState } from "react";
+import { ITask } from "../../interfaces/ITask";
 
 function Todo() {
-  function addTask(e: MouseEvent<HTMLAnchorElement>) {
-    e.preventDefault();
-    console.log("tarea agregada");
+  let [store, setStore] = useState<ITask[]>([]);
+
+  function addTask(): void {
+    setStore([...store, { title: "Tarea 1", description: "Descripción 1" }]);
   }
   return (
     <div>
-      <a href="#" onClick={addTask}>Agregar tarea</a>
+      <button onClick={addTask}>Agregar tarea</button>
     </div>
-  )
+  );
 }
 
 export default Todo;
